@@ -1,6 +1,83 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
 
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html,
+body {}
+
 body {
-  background: $primary-background;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Oswald", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: white;
+	overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+	isolation: isolate;
+}
+
+body,
+html {
+	// background-image: linear-gradient(to top,
+	// 		// #070024 20%,
+	// 		// #32135a 64%,
+	// 		// #0c0132 100%);
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+
+/*~~~~~~~~~~~~~~~~End Reset~~~~~~~~~~~~~~~~~ */
+/*~~~~~~~~~~~~~~~~Layout~~~~~~~~~~~~~~~~~ */
+
+
+body {
+	// background-image: url("../images/trees.jpg");
+	// background-image: url("https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+	background-image: url("https://images.pexels.com/photos/2499699/pexels-photo-2499699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+	// background-image: url("https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+// background-image: url("https://media2.giphy.com/media/2csuIJj6TmuKA/giphy.gif?cid=ecf05e47bzkcx02v6gbucty28bjmuokpq7vnr4bahy5kgphk&rid=giphy.gif&ct=g");
+// background-image: url("https://media1.giphy.com/media/3oEdv0DUQOagqEI30k/giphy.gif?cid=ecf05e4716nynfmwqtwby4uievyfjtem62rjuhq44wr4vuxh&rid=giphy.gif&ct=g");
+// https://media4.giphy.com/media/3oKIPcyPoS6w7XIn96/200w.webp?cid=ecf05e47fuiep94j647n8om3uft48bg09vykm5oqu7brp76g&rid=200w.webp&ct=g
+// background-image: url("https://media3.giphy.com/media/1ncx1ypcalsEE/giphy.webp?cid=ecf05e4716nynfmwqtwby4uievyfjtem62rjuhq44wr4vuxh&rid=giphy.webp&ct=g");
+background-size: cover;
 }
