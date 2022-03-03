@@ -81,3 +81,11 @@ body {
 // background-image: url("https://media3.giphy.com/media/1ncx1ypcalsEE/giphy.webp?cid=ecf05e4716nynfmwqtwby4uievyfjtem62rjuhq44wr4vuxh&rid=giphy.webp&ct=g");
 background-size: cover;
 }
+
+.nav-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	// border: 2px solid blue;
+	background: #4f646196;
+}
