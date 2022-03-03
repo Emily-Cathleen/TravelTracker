@@ -6,3 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
 </head>
+<body>
+  <main class="main-container">
+    <nav class="nav-wrapper">
+      <img class="nav-image" src="./images/turing-logo.png" alt="turing logo">
+      <h1 class="welcome-user" id="welcome">Adventure Awaits Emily</h1>
+      <section class="total-spent">Total Spent On Trips:</section>
+    </nav>
+    <section class="card-wrapper">
+      <article class="card calender-card">
+        <img class="card-image" alt="Calender Image" src="./images/timetable.png" />
+        <h1 id="todaySteps "></h1>
+        <h3>Calender</h3>
+        <input class="date-input" id="dateInput" type="date" value="yyyy-MM-dd" placeholder="date" required />
+      </article>
+      <article class="card traveler-card">
+        <img class="card-image" alt="Traveler Image" src="./images/timetable.png" />
+        <h1 id=""></h1>
+        <h3>Travelers</h3>
+          <form class="traveler-form">
+            <input class="number-travelers-input" id="numberOfTravelersInput" type="number" min="1" placeholder="# of travelers" required />
+            <!-- <input class="number-of-travelers" type="text"/> -->
+          </form>
+      </article>
+      <article class="card destinations-card">
+        <img class="card-image" alt="Traveler Image" src="" />
+        <h3>Destinations</h3>
+        <select class="destination-drop-down" name="dropDown" id="dropDownMenuDestinations" required>
+          <option value="" disabled selected hidden>destinations</option>
+        </select>
+      </article>
+    </section>
+    <section class="submit-button-section">
+      <button class="submit-button" id="submitButton">Create Your Trip!</button>
+      <h1 class="estimated-trip-cost" id="estimatedCostOfTrip"></h1>
+    </section>
+    <section class="trips-wrapper">
+      <article class="card pending-trips-card">
+        <img class="card-image" alt="Calender Image" src="./images/timetable.png" />
+        <h1 id=" "></h1>
+        <h3>Pending Trips</h3>
+      </article>
+      <article class="card calender-card">
+        <img class="card-image" alt="Calender Image" src="./images/timetable.png" />
+        <h1 id="todaySteps "></h1>
+        <h3>Upcomming Trips</h3>
+      </article>
+      <article class="card calender-card">
+        <img class="card-image" alt="Calender Image" src="./images/timetable.png" />
+        <h1 id="todaySteps "></h1>
+        <h3>Past Trips</h3>
+      </article>
+    </section>
+
+  </main>
+  <script src="bundle.js"></script>
+
+</body>
+</html>
