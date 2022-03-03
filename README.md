@@ -1,4 +1,4 @@
-# Webpack Starter Kit
+# Travel Tracker: Adventure Awaits
 
 ## Clone This Repo
 
