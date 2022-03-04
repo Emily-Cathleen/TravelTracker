@@ -3,7 +3,6 @@ import Traveler from "../src/Traveler";
 import travelerTestData from "../src/sample-data/traveler-test-data";
 
 
-
 describe("Traveler", () => {
 
   let traveler1;
@@ -40,6 +39,13 @@ describe("Traveler", () => {
   it("should have a travelerType", () => {
     expect(traveler1.travelerType).to.equal("relaxer");
   });
+
+  it("should return the travelers first name", () => {
+    expect(traveler1.getFirstName()).to.equal("Ham");
+    expect(user2.getFirstName()).to.equal("Rachael");
+  });
+});
+
 
 
   });
