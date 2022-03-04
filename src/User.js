@@ -1,9 +1,0 @@
-
-
-
-Class User {
-  constructor() {
-
-
-  }
-}
