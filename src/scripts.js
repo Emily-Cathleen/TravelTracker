@@ -4,6 +4,7 @@ import './images/turing-logo.png'
 import Traveler from "./Traveler";
 import Destination from "./Destination";
 import Trip from "./Trip";
+import DataRepository from "./DataRepository";
 
 import {
   fetchTravelerData,
@@ -12,7 +13,7 @@ import {
 } from "./apiCalls.js";
 
 //GLOBALS
-let data = {}
+let allData = {};
 let travelers;
 let trips;
 let destinations;
@@ -33,20 +34,26 @@ const fetchAllData = () => {
 };
 
 const parseAllData = (data) => {
-  console.log("DAATT", data)
-  travelers = data[0].travelers.map(traveler => new Traveler(traveler));
-  trips = data[1].trips.map(trip => new Trip(trip));
-  destinations = data[2].destinations.map(destination => new Destination(destination));
-  getRandomIndex(travelers)
+  const dataRepository = {};
+  dataRepository.travelers = data[0].travelers.map(traveler => new Traveler(traveler));
+  dataRepository.trips = data[1].trips.map(trip => new Trip(trip));
+  dataRepository.destinations = data[2].destinations.map(destination => new Destination(destination));
+  allData = new DataRepository(dataRepository);
+  console.log("DATAREPO", allData)
+  getRandomIndex(allData.travelers)
 };
 
 const getRandomIndex = (array) => {
   randomIndex = Math.floor(Math.random() * array.length);
-  greetUser(randomIndex)
+  greetUser(allData.randomIndex)
 };
 
 const greetUser = (traveler) => {
-    welcome.innerText = `Adventure Awaits, ${travelers[randomIndex].getFirstName()}`;
+    welcome.innerText = `Adventure Awaits, ${allData.travelers[randomIndex].getFirstName()}`;
   };
+
+// const displayCurrentTrips = () => {
+//
+// }
 
 window.addEventListener('load', fetchAllData);
