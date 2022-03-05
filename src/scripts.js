@@ -35,7 +35,7 @@ const fetchAllData = () => {
 const parseAllData = (data) => {
   console.log("DAATT", data)
   travelers = data[0].travelers.map(traveler => new Traveler(traveler));
-  // trips = data[1].trips.map(trip => new Trip(trip));
+  trips = data[1].trips.map(trip => new Trip(trip));
   // destinations = data[2].destinations.map(destination => new Destination(destination));
   getRandomIndex(travelers)
 };
