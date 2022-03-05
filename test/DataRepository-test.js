@@ -10,7 +10,7 @@ import travelerTestData from "../src/sample-data/traveler-test-data";
 
 
 describe("DataRepository", () => {
-  let dataRepository1;
+  let dataRepository;
   let dataRepositoryTestData;
   let travelerData;
   let tripData;
@@ -28,7 +28,15 @@ describe("DataRepository", () => {
       destinations: destinationData
     }
 
-    dataRepository1 = new DataRepository(dataRepositoryTestData)
-  })
+    dataRepository = new DataRepository(dataRepositoryTestData)
+  });
+
+  it("should be a function", function () {
+    expect(Destination).to.be.a("function");
+  });
+
+
+
+
 
 })
