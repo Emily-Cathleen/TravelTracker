@@ -7,11 +7,20 @@ class DataRepository {
     this.destinations = data.destinations;
   }
 
-getTravelerTrips(travelerID) {
-  const tripsbyTravelerID = this.trips.filter(trip > trip.travelerId === userI)
-}
+// getTravelerTrips(travelerID) {
+//   const tripsByTravelerID = this.trips.filter(trip > trip.travelerId === userID)
+// }
 //
-// calculateTotalSpentThisYear()
+//
+
+calculateTotalSpentThisYear() {
+  const totalLodging = this.destinations.estimatedLodgingCostPerDay * this.duration;
+  const totalFlight = this.destinations.estimatedFlightCostPerPerson * this.travelerCount;
+  const tripCost = totalLodging + totalFlight;
+  const costWithAgentFee = tripCost + (tripCost * .10);
+    this.tripCost = costWithAgentFee;
+    return costWithAgentFee;
+  }
 
 }
 
