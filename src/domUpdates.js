@@ -1,19 +1,11 @@
- 
-const welcome = document.getElementById("welcome");
 
+// const welcome = document.getElementById("welcome");
+// let randomIndex;
 
 
 //DOM MANIPULATION FUNCTIONS
 
-const getRandomIndex = (array) => {
-  return Math.floor(Math.random() * array.length);
-};
-
-greetUser(currentTraver) {
-    welcome.innerText = `Welcome, ${currentTraveler.getFirstName()}`;
-  },
 
 
 
-
-export default domUpdates;
+// export default domUpdates;
