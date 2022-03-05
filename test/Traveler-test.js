@@ -42,10 +42,6 @@ describe("Traveler", () => {
 
   it("should return the travelers first name", () => {
     expect(traveler1.getFirstName()).to.equal("Ham");
-    expect(user2.getFirstName()).to.equal("Rachael");
+    expect(traveler2.getFirstName()).to.equal("Rachael");
   });
 });
-
-
-
-  });
