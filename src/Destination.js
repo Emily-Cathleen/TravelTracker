@@ -7,6 +7,8 @@ class Destination {
     this.image = destinationData.image;
     this.alt = destinationData.alt;
   }
+
+
 }
 
 
