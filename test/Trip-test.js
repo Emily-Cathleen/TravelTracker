@@ -32,20 +32,39 @@ describe("Trip", () => {
     expect(trip3.id).to.equal(3);
   });
 
-  it("should have a name", () => {
-    expect(traveler1.name).to.equal("Ham Leadbeater");
+  it("should have a userID", () => {
+    expect(trip1.userID).to.equal(44);
+    expect(trip2.userID).to.equal(35);
   });
 
-  it("should have a travelerType", () => {
-    expect(traveler1.travelerType).to.equal("relaxer");
+  it("should have a destinationID", () => {
+    expect(trip1.destinationID).to.equal(49);
+    expect(trip2.destinationID).to.equal(25);
   });
 
-  it("should return the travelers first name", () => {
-    expect(traveler1.getFirstName()).to.equal("Ham");
-    expect(user2.getFirstName()).to.equal("Rachael");
+  it("should have the number of travelers", () => {
+    expect(trip1.travelers).to.equal(1);
+    expect(trip2.travelers).to.equal(5);
   });
+
+  it("should have the start date of the trip", () => {
+    expect(trip1.date).to.equal("2022/09/16");
+    expect(trip2.date).to.equal("2022/10/04");
+  });
+
+  it("should have the duration of the trip", () => {
+    expect(trip1.duration).to.equal(8);
+    expect(trip2.duration).to.equal(18);
+  });
+
+  it("should have the status of the trip", () => {
+    expect(trip1.status).to.equal("approved");
+    expect(trip2.status).to.equal("approved");
+  });
+
+  it("should have the suggested activities of the trip", () => {
+    expect(trip1.suggestedActivities).to.eql([]);
+    expect(trip2.suggestedActivities).to.eql([]);
+  });
+
 });
-
-
-
-  });
