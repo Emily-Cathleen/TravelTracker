@@ -9,6 +9,9 @@ class Trip {
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
   }
+
+
+
 }
 
 
