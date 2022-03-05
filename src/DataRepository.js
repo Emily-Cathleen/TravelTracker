@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+// import dayjs from 'dayjs'
 
 class DataRepository {
   constructor(data) {
@@ -7,7 +7,13 @@ class DataRepository {
     this.destinations = data.destinations;
   }
 
-calculateTotalSpentThisYear()
-
+getTravelerTrips(travelerID) {
+  const tripsbyTravelerID = this.trips.filter(trip > trip.travelerId === userI)
+}
+//
+// calculateTotalSpentThisYear()
 
 }
+
+
+export default DataRepository;
