@@ -86,13 +86,13 @@ background-size: cover;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	// border: 2px solid blue;
+	border: 2px solid blue;
 	background: #4f646196;
 }
 
 .total-spent {
 	display: flex;
-	// border: 2px solid white;
+	border: 2px solid white;
 }
 
 .nav-image {
@@ -138,6 +138,10 @@ background-size: cover;
 
 }
 
+.destinations-card {
+	border: 2px solid pink;
+}
+
 .traveler-form {
 	display: flex;
 	align-items: center;
@@ -157,6 +161,11 @@ background-size: cover;
 	justify-content: space-around;
 	padding: 20px 0px 20px 0px;
 	height: 47vh;
+}
+
+.drop-down-wrapper {
+	border: 2px solid green;
+
 }
 
 .hidden {
