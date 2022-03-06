@@ -32,11 +32,24 @@ describe("DataRepository", () => {
   });
 
   it("should be a function", function () {
-    expect(Destination).to.be.a("function");
+    expect(DataRepository).to.be.a("function");
   });
 
+  it("should get the Travelers trips", function () {
+    expect(dataRepository.getTravelerTrips(44)).to.eql([])
+  });
 
-
+  // it("should return the current day", function () {
+  //   expect(dataRepository.currentDate()).to.equal("2022-03-05T22:45:54.914Z")
+  // });
+  //
+  // it("should return a future date ", function () {
+  //   expect(dataRepository.isAfterToday()).to.equal("2022-06-05T22:45:54.914Z")
+  // });
+  //
+  // it("should return a past date ", function () {
+  //   expect(dataRepository.isBeforeToday()).to.equal("2022-02-05T22:45:54.914Z")
+  // });
 
 
 })
