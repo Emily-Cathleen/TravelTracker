@@ -35,9 +35,30 @@ describe("DataRepository", () => {
     expect(DataRepository).to.be.a("function");
   });
 
-  it("should get the Travelers trips", function () {
-    expect(dataRepository.getTravelerTrips(44)).to.eql([])
+  it("should be an instance of DataRepository", function () {
+    expect(dataRepository).to.be.an.instanceof(DataRepository);
   });
+
+  it("should store traveler data", function () {
+    expect(dataRepository.travelers).to.be.equal(travelerData);
+  });
+
+  it("should store trips data", function () {
+    expect(dataRepository.trips).to.be.equal(tripData);
+  });
+
+  it("should store destination data", function () {
+    expect(dataRepository.destinations).to.be.equal(destinationData);
+  });
+
+
+
+
+
+
+  // it("should get the Travelers trips", function () {
+  //   expect(dataRepository.getTravelerTrips(44)).to.eql([])
+  // });
 
   // it("should return the current day", function () {
   //   expect(dataRepository.currentDate()).to.equal("2022-03-05T22:45:54.914Z")
