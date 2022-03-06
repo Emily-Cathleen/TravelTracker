@@ -23,7 +23,6 @@ class DataRepository {
         return trip
       }
     })
-    // console.log(tripsByTravelerID)
     return tripsByTravelerID
   }
 
