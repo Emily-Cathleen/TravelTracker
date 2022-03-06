@@ -22,6 +22,7 @@ let randomIndex;
 //QUERY SELECTORS
 
 const welcome = document.getElementById("welcome");
+const dropDownMenuDestinations = document.getElementById("dropDownMenuDestinations");
 const startDateInput = document.getElementById("startDateInput");
 const endDateInput = document.getElementById("endDateInput");
 
@@ -44,8 +45,10 @@ const parseAllData = (data) => {
   allData = new DataRepository(dataRepository);
   console.log("DATAREPO", allData)
   getRandomIndex(allData.travelers);
+  populateDestinationDropDown(allData.destination);
+
   // dataRepository.currentTraveler = dataRepository.createNewTraveler(allData.travelers[getRandomIndex(allData.travelers)]);
-  console.log(getRandomIndex(allData.travelers))
+
 };
 
 const getRandomIndex = (array) => {
@@ -56,6 +59,14 @@ const getRandomIndex = (array) => {
 const greetUser = (traveler) => {
     welcome.innerText = `Adventure Awaits, ${allData.travelers[randomIndex].getFirstName()}`;
   };
+
+const populateDestinationDropDown = (destinations) => {
+  allData.destinations.forEach(destination => {
+    console.log(destination.destination)
+    dropDownMenuDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`
+  })
+}
+
 
 // const displayCurrentTrips = () => {
 //
