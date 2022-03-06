@@ -10,26 +10,6 @@ status: "approved",
 suggestedActivities: [ ]
 },
 {
-id: 46,
-userID: 44,
-destinationID: 33,
-travelers: 2,
-date: "2020/08/24",
-duration: 11,
-status: "approved",
-suggestedActivities: [ ]
-},
-{
-id: 202,
-userID: 44,
-destinationID: 15,
-travelers: 3,
-date: "2022/08/08",
-duration: 7,
-status: "approved",
-suggestedActivities: [ ]
-},
-{
 id: 2,
 userID: 35,
 destinationID: 25,
@@ -66,6 +46,26 @@ destinationID: 29,
 travelers: 3,
 date: "2022/04/30",
 duration: 18,
+status: "approved",
+suggestedActivities: [ ]
+},
+{
+id: 46,
+userID: 44,
+destinationID: 33,
+travelers: 2,
+date: "2020/08/24",
+duration: 11,
+status: "approved",
+suggestedActivities: [ ]
+},
+{
+id: 202,
+userID: 44,
+destinationID: 15,
+travelers: 3,
+date: "2022/08/08",
+duration: 7,
 status: "approved",
 suggestedActivities: [ ]
 },
