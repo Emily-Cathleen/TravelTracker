@@ -22,6 +22,9 @@ let randomIndex;
 //QUERY SELECTORS
 
 const welcome = document.getElementById("welcome");
+const startDateInput = document.getElementById("startDateInput");
+const endDateInput = document.getElementById("endDateInput");
+
 
 //FUNCTIONS
 
@@ -40,7 +43,9 @@ const parseAllData = (data) => {
   dataRepository.destinations = data[2].destinations.map(destination => new Destination(destination));
   allData = new DataRepository(dataRepository);
   console.log("DATAREPO", allData)
-  getRandomIndex(allData.travelers)
+  getRandomIndex(allData.travelers);
+  // dataRepository.currentTraveler = dataRepository.createNewTraveler(allData.travelers[getRandomIndex(allData.travelers)]);
+  console.log(getRandomIndex(allData.travelers))
 };
 
 const getRandomIndex = (array) => {
