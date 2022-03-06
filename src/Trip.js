@@ -9,13 +9,9 @@ class Trip {
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
     this.tripStartDate;
-    //setDate for start and end date. Field for each of them and pick specific date.
-    //reassign the date using varibleName input.value
     this.tripEndDate;
     this.tripCost;
   }
-
-  
 
 }
 
