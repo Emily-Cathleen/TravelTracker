@@ -25,6 +25,7 @@ let dataRepository;
 
 const welcome = document.getElementById("welcome");
 const dropDownMenuDestinations = document.getElementById("dropDownMenuDestinations");
+const pendingTrips = document.getElementById("pendingTrips");
 const startDateInput = document.getElementById("startDateInput");
 const endDateInput = document.getElementById("endDateInput");
 
@@ -50,6 +51,7 @@ const parseAllData = (data) => {
   dataRepository = new DataRepository(dataObject);
   dataRepository.currentTraveler = dataRepository.getCurrentTraveler(newTravelerID);
   greetUser();
+  displayPendingTrips();
   populateDestinationDropDown(dataObject.destinations);
   // console.log("CURRENTRAVVVVVV", dataRepository.currentTraveler)
 };
@@ -60,7 +62,7 @@ const getRandomIndex = (array) => {
 };
 
 const greetUser = (traveler) => {
-  console.log("FIRSTNAME", dataRepository.getFirstName())
+  // console.log("FIRSTNAME", dataRepository.getFirstName())
     welcome.innerText = `Adventure Awaits, ${dataRepository.getFirstName()}`;
   };
 
@@ -71,17 +73,21 @@ const populateDestinationDropDown = () => {
 }
 
 const displayPendingTrips = (id) => {
-  
+  displayPendingTrips(trip) {
+    pendingTrips.innerText += `
+    <div class="card">
+     <p>Date: ${trip.date}</p>
+     <p>Destination: ${dest}</p>
+     <p>Travelers: ${trip.travelers}
+     <p>Duration: ${trip.duration} days</p>
+     <p>Status: ${trip.status}</p>
+     </div>
+    `;
+  }
+  pendingTrips.innerHTML = `${dataRepository.getPendingTrips()}`;
 }
 
 
 
-// const displayPastTrips = () => {
-//   const travelersTrips = DataRepository.getTravelerTrips(random)
-// }
-
-// const displayCurrentTrips = () => {
-//
-// }
 
 window.addEventListener('load', fetchAllData);
