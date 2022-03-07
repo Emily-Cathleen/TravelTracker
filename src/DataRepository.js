@@ -41,9 +41,9 @@ class DataRepository {
 
   getDestinationName(destinationID) {
     const name = this.destinations.find(destination => {
-      return destination.destinationID === destinationID
+      return destination.id === destinationID
     })
-    return name.destination
+    return name
   }
 
 // getPendingTrips(travelerID) {
@@ -60,16 +60,7 @@ class DataRepository {
 
 
 
- //  getPastTrips(currentDate) {
- //   const pastTrips = this.trips.filter(trip => {
- //     const tripDate = new Date(`${trip.date}`).getTime();
- //     if (currentDate > tripDate) {
- //       return trip;
- //     }
- //   });
- //   traveler.pastTrips = pastTrips;
- //   return pastTrips;
- // }
+ //
 
 
  // calculateTotalSpentThisYear() {
