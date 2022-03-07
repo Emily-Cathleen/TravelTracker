@@ -28,63 +28,67 @@ describe("DataRepository", () => {
       destinations: destinationData
     }
 
-    dataRepository = new DataRepository(dataRepositoryTestData)
+    dataRepository = new DataRepository(dataRepositoryTestData);
   });
 
-  it("should be a function", function () {
+  it("should be a function", function() {
     expect(DataRepository).to.be.a("function");
   });
 
-  it("should be an instance of DataRepository", function () {
+  it("should be an instance of DataRepository", function() {
     expect(dataRepository).to.be.an.instanceof(DataRepository);
   });
 
-  it("should store traveler data", function () {
+  it("should store traveler data", function() {
     expect(dataRepository.travelers).to.be.equal(travelerData);
   });
 
-  it("should store trips data", function () {
+  it("should store trips data", function() {
     expect(dataRepository.trips).to.be.equal(tripData);
   });
 
-  it("should store destination data", function () {
+  it("should store destination data", function() {
     expect(dataRepository.destinations).to.be.equal(destinationData);
   });
 
-  it("should create a new traveler", function () {
+  it("should create a new traveler", function() {
     expect(dataRepository.createNewTraveler(travelerData)).to.be.equal();
   });
 
-  it("should get the Travelers trips", function () {
+  it("should get the Travelers trips", function() {
     expect(dataRepository.getTravelerTrips(35)).to.eql(
-    [{
-    id: 2,
-    userID: 35,
-    destinationID: 25,
-    travelers: 5,
-    date: "2022/10/04",
-    duration: 18,
-    status: "approved",
-    suggestedActivities: [ ]
-    }])
+      [{
+        id: 2,
+        userID: 35,
+        destinationID: 25,
+        travelers: 5,
+        date: "2022/10/04",
+        duration: 18,
+        status: "approved",
+        suggestedActivities: []
+      }])
   });
 
-  it("should return the travelers pending trips", function () {
-    expect(dataRepository.getPendingTrips()).to.equal()
-  });
-
-
-  // it("should return the current day", function () {
-  //   expect(dataRepository.currentDate(tripData)).to.equal()
+  // it("should return the travelers first name", () => {
+  //   expect(traveler1.getFirstName()).to.equal("Ham");
   // });
   //
-  // it("should return a future date ", function () {
-  //   expect(dataRepository.isAfterToday(tripData)).to.equal()
+  // it("should return the travelers pending trips", function() {
+  //   currentTraveler = dataRepository.getCurrentTraveler(38);
+  //   dataRepository.getPendingTrips()
+  //   expect(dataRepository.currentTraveler.pendingTrips).to.eql(
+  //     [{
+  //       id: 71,
+  //       userID: 38,
+  //       destinationID: 28,
+  //       travelers: 1,
+  //       date: "2020/05/26",
+  //       duration: 11,
+  //       status: "pending",
+  //       suggestedActivities: []
+  //     }])
   // });
-  //
-  // it("should return a past date ", function () {
-  //   expect(dataRepository.isBeforeToday(tripData)).to.equal()
-  // });
+
 
 
 })
