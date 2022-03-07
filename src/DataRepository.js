@@ -31,20 +31,34 @@ class DataRepository {
   getTravelerTrips(travelerID) {
     const tripsByTravelerID = this.trips.filter(trip => {
       if (trip.userID === travelerID) {
-        return trip
+      this.currentTraveler.allTrips.push(trip)
+      return trip
       }
     })
     return tripsByTravelerID
   }
 
-getPendingTrips() {
-  const pending = this.trips.filter(trip => {
-    if(trip.status === "pending") {
-    this.currentTraveler.pendingTrips.push(trip)
+
+  getDestinationName(destinationID) {
+    const name = this.destinations.find(destination => {
+      return destination.destinationID === destinationID
+    })
+    return name.destination
   }
-})
-  return pending
-}
+
+// getPendingTrips(travelerID) {
+//   const pending = this.trips.forEach(trip => {
+//     if(trip.userID === travelerID) {
+//       if(trip.status === "pending"){
+//         this.currentTraveler.pendingTrips.push(trip)
+//       }
+//     }
+// })
+// return pending
+// }
+
+
+
 
  //  getPastTrips(currentDate) {
  //   const pastTrips = this.trips.filter(trip => {
