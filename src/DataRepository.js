@@ -69,36 +69,6 @@ getPendingTrips() {
 
 
 
-//   currentDate(trip) {
-//     let endDate = trip.date.setDate(trip.duration)
-//      return new Date(trip.date).valueOf() <= new Date().valueOf() &&
-//      new Date(endDate).valueOf() >= new Date().valueOf()
-//   }
-//
-//   isAfterToday(trip) {
-//     return new Date(trip.date).valueOf() > new Date().valueOf();
-//   }
-//
-//   isBeforeToday(trip) {
-//     let endDate = trip.date.setDate(trip.duration)
-//     return new Date(endDate).valueOf() < new Date().valueOf();
-//   }
-//
-// sortTravelerTrips() {
-//   this.currentTraveler.allTrips.forEach(trip => {
-//     trip.date = trip.date.replaceAll('/', '-');
-//     if(currentDate(trip)) {
-//       this.currentTraveler.presentTrips.push(trip)
-//     } else if (isAfterToday(trip)){
-//       this.currentTraveler.upcomingTrips.push(trip)
-//     } else if (isBeforeToday(trip)){
-//       this.currentTraveler.pastTrips.push(trip)
-//     } else if (trip.status === "pending") {
-//       this.currentTraveler.pendingTrips.push(trip)
-//     }
-//   })
-// }
-
 }
 
 
