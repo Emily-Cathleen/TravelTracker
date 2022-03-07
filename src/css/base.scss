@@ -82,6 +82,11 @@ body {
 background-size: cover;
 }
 
+.scrollable {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .nav-wrapper {
 	display: flex;
 	flex-direction: column;
