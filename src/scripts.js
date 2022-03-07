@@ -18,13 +18,14 @@ let travelers;
 let trips;
 let destinations;
 let randomIndex;
-let currentTraveler;
+let currentUser;
 let dataRepository;
 
 //QUERY SELECTORS
 
 const welcome = document.getElementById("welcome");
 const dropDownMenuDestinations = document.getElementById("dropDownMenuDestinations");
+const pastTrips = document.getElementById("pastTrips");
 const pendingTrips = document.getElementById("pendingTrips");
 const startDateInput = document.getElementById("startDateInput");
 const endDateInput = document.getElementById("endDateInput");
@@ -38,11 +39,11 @@ const fetchAllData = () => {
     fetchTripData(),
     fetchDestinationData(),
   ]).then((data) => parseAllData(data))
-  // console.log("FETCH", fetchTravelerData())
 };
 
 const parseAllData = (data) => {
   const newTravelerID = getRandomIndex(data[0].travelers);
+  // console.log("NEWTRAVID", newTravelerID)
   const dataObject = {};
   dataObject.travelers = data[0].travelers.map(traveler => new Traveler(traveler));
   dataObject.trips = data[1].trips.map(trip => new Trip(trip));
@@ -50,8 +51,10 @@ const parseAllData = (data) => {
   dataObject.currentTraveler;
   dataRepository = new DataRepository(dataObject);
   dataRepository.currentTraveler = dataRepository.getCurrentTraveler(newTravelerID);
+  currentUser = dataRepository.currentTraveler;
   greetUser();
-  displayPendingTrips();
+  displayAllTrips();
+  // displayPendingTrips(newTravelerID);
   populateDestinationDropDown(dataObject.destinations);
   // console.log("CURRENTRAVVVVVV", dataRepository.currentTraveler)
 };
@@ -61,31 +64,47 @@ const getRandomIndex = (array) => {
   return randomIndex;
 };
 
-const greetUser = (traveler) => {
-  // console.log("FIRSTNAME", dataRepository.getFirstName())
-    welcome.innerText = `Adventure Awaits, ${dataRepository.getFirstName()}`;
-  };
+const greetUser = () => {
+  welcome.innerText = `Adventure Awaits, ${dataRepository.getFirstName()}`;
+};
 
 const populateDestinationDropDown = () => {
-    dataRepository.destinations.forEach(destination => {
+  dataRepository.destinations.forEach(destination => {
     dropDownMenuDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`
   })
 }
 
-const displayPendingTrips = (id) => {
-  displayPendingTrips(trip) {
-    pendingTrips.innerText += `
-    <div class="card">
-     <p>Date: ${trip.date}</p>
-     <p>Destination: ${dest}</p>
-     <p>Travelers: ${trip.travelers}
-     <p>Duration: ${trip.duration} days</p>
-     <p>Status: ${trip.status}</p>
-     </div>
-    `;
-  }
-  pendingTrips.innerHTML = `${dataRepository.getPendingTrips()}`;
-}
+const displayAllTrips = () => {
+  const getTrips = dataRepository.getTravelerTrips(currentUser.id)
+  getTrips.forEach(trip => {
+    pastTrips.innerHTML += `
+    <div id="${Date.now()}">
+        <p>Date: ${trip.date}</p>
+        <p>Travelers: ${trip.travelers}
+        <p>Duration: ${trip.duration} days</p>
+        <p>Status: ${trip.status}</p>
+      </div>
+    `
+  })
+};
+
+// const displayPendingTrips = (id) => {
+//   // console.log(dataRepository.getPendingTrips(id))
+//   dataRepository.getPendingTrips(id).forEach(trip => {
+//     // console.log(trip.destinationID)
+//     const destinationName = getDestinationName(trip.destinationID);
+//     pendingTrips.innerHTML += `
+//     <div id="${date.Now()}">
+//      <p>Date: ${trip.date}</p>
+//      <p>Destination: ${destinationName}</p>
+//      <p>Travelers: ${trip.travelers}
+//      <p>Duration: ${trip.duration} days</p>
+//      <p>Status: ${trip.status}</p>
+//      </div>
+//     `
+//   })
+  // pendingTrips.innerHTML = `${dataRepository.getPendingTrips()}`;
+
 
 
 
