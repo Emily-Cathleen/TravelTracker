@@ -13,6 +13,7 @@ class Trip {
     this.tripCost;
   }
 
+
 }
 
 
