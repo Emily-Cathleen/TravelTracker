@@ -18,6 +18,8 @@ let travelers;
 let trips;
 let destinations;
 let randomIndex;
+let currentTraveler;
+let dataRepository;
 
 //QUERY SELECTORS
 
@@ -35,38 +37,48 @@ const fetchAllData = () => {
     fetchTripData(),
     fetchDestinationData(),
   ]).then((data) => parseAllData(data))
+  // console.log("FETCH", fetchTravelerData())
 };
 
 const parseAllData = (data) => {
-  const dataRepository = {};
-  dataRepository.travelers = data[0].travelers.map(traveler => new Traveler(traveler));
-  dataRepository.trips = data[1].trips.map(trip => new Trip(trip));
-  dataRepository.destinations = data[2].destinations.map(destination => new Destination(destination));
-  allData = new DataRepository(dataRepository);
-  console.log("DATAREPO", allData)
-  getRandomIndex(allData.travelers);
-  populateDestinationDropDown(allData.destination);
-
-  // dataRepository.currentTraveler = dataRepository.createNewTraveler(allData.travelers[getRandomIndex(allData.travelers)]);
-
+  const newTravelerID = getRandomIndex(data[0].travelers);
+  const dataObject = {};
+  dataObject.travelers = data[0].travelers.map(traveler => new Traveler(traveler));
+  dataObject.trips = data[1].trips.map(trip => new Trip(trip));
+  dataObject.destinations = data[2].destinations.map(destination => new Destination(destination));
+  dataObject.currentTraveler;
+  dataRepository = new DataRepository(dataObject);
+  dataRepository.currentTraveler = dataRepository.getCurrentTraveler(newTravelerID);
+  greetUser();
+  populateDestinationDropDown(dataObject.destinations);
+  // console.log("CURRENTRAVVVVVV", dataRepository.currentTraveler)
 };
 
 const getRandomIndex = (array) => {
   randomIndex = Math.floor(Math.random() * array.length);
-  greetUser(allData.randomIndex)
+  return randomIndex;
 };
 
 const greetUser = (traveler) => {
-    welcome.innerText = `Adventure Awaits, ${allData.travelers[randomIndex].getFirstName()}`;
+  console.log("FIRSTNAME", dataRepository.getFirstName())
+    welcome.innerText = `Adventure Awaits, ${dataRepository.getFirstName()}`;
   };
 
-const populateDestinationDropDown = (destinations) => {
-  allData.destinations.forEach(destination => {
-    console.log(destination.destination)
+const populateDestinationDropDown = () => {
+    dataRepository.destinations.forEach(destination => {
     dropDownMenuDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`
   })
 }
 
+const displayPendingTrips = (id) => {
+  
+}
+
+
+
+// const displayPastTrips = () => {
+//   const travelersTrips = DataRepository.getTravelerTrips(random)
+// }
 
 // const displayCurrentTrips = () => {
 //
