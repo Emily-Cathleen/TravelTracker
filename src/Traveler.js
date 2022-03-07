@@ -12,27 +12,6 @@ class Traveler {
     this.pendingTrips = [];
   }
 
-  // getFirstName() {
-  //   const firstName = this.name.split(" ")[0];
-  //   return firstName
-  // }
-
-
- //  getAllTrips(allTrips, allDestinations) {
- //   let filteredTrips = allTrips.filter(trip => trip.userID === this.id);
- //   let currentDestination;
- //   filteredTrips.forEach(trip => {
- //     allDestinations.forEach(location => {
- //       if (trip.destinationID === location.id) {
- //         currentDestination = location;
- //         this.allTrips.push(new Trip(trip, currentDestination));
- //       }
- //     })
- //   })
- //   return this.allTrips
- // }
-
-
 
 }
 
