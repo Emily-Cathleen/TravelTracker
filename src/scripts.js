@@ -75,10 +75,14 @@ const populateDestinationDropDown = () => {
 }
 
 const displayAllTrips = () => {
-  const getTrips = dataRepository.getTravelerTrips(currentUser.id)
+  const getTrips = dataRepository.getTravelerTrips(currentUser.id);
   getTrips.forEach(trip => {
+    const destinationName = dataRepository.getDestinationName(trip.destinationID);
+    console.log(destinationName)
     pastTrips.innerHTML += `
     <div id="${Date.now()}">
+        <p>Destination: ${destinationName.destination}</p>
+        <img src="${destinationName.image}"/>
         <p>Date: ${trip.date}</p>
         <p>Travelers: ${trip.travelers}
         <p>Duration: ${trip.duration} days</p>
