@@ -36,4 +36,28 @@ const fetchDestinationData = () => {
     });
 };
 
-export {fetchTravelerData, fetchTripData, fetchDestinationData}
+
+// ~~~~~~~ POST ~~~~~~~
+
+const postNewTrip = (trip) => {
+  return fetch("http://localhost:3001/api/v1/trips",
+  {
+    method: "POST",
+    body: JSON.stringify(trip),
+    headers: { "Content-Type": "application/json" },
+  })
+  .then(response => {response.json()})
+};
+
+
+const postNewDestination = (destination) => {
+  return fetch("http://localhost:3001/api/v1/destinations"	, {
+    method: "POST",
+    body: JSON.stringify(destination),
+    headers: { "Content-Type": "application/json" },
+  })
+  .then(response => {response.json()})
+  };
+
+
+export {fetchTravelerData, fetchTripData, fetchDestinationData, postNewTrip, postNewDestination}
