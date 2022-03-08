@@ -7,6 +7,7 @@ import Destination from "../src/Destination";
 import destinationTestData from "../src/sample-data/destination-test-data";
 import tripTestData from "../src/sample-data/trip-test-data";
 import travelerTestData from "../src/sample-data/traveler-test-data";
+import dayjs from 'dayjs';
 
 
 describe("DataRepository", () => {
