@@ -49,15 +49,23 @@ const postNewTrip = (trip) => {
   .then(response => {response.json()})
 };
 
+const errorHandling = (response) => {
+  if(!response.ok) {
+    throw "We had trouble booking your trip, please try again dumbass."
+  }
+  return response.json()
+}
 
-const postNewDestination = (destination) => {
-  return fetch("http://localhost:3001/api/v1/destinations"	, {
-    method: "POST",
-    body: JSON.stringify(destination),
-    headers: { "Content-Type": "application/json" },
-  })
-  .then(response => {response.json()})
-  };
+//
+// const postNewDestination = (destination) => {
+//   return fetch("http://localhost:3001/api/v1/destinations",
+//   {
+//     method: "POST",
+//     body: JSON.stringify(destination),
+//     headers: { "Content-Type": "application/json" },
+//   })
+//   .then(response => {response.json()})
+//   };
 
 
-export {fetchTravelerData, fetchTripData, fetchDestinationData, postNewTrip, postNewDestination}
+export {fetchTravelerData, fetchTripData, fetchDestinationData, postNewTrip}
