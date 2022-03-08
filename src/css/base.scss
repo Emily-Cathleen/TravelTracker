@@ -159,6 +159,12 @@ background-size: cover;
 	flex-direction: column;
 }
 
+.estimate-button-section {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 .trips-wrapper {
 	border: 2px solid green;
 	display: flex;
