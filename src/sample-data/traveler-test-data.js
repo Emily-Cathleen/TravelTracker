@@ -1,4 +1,4 @@
-const travelers = [
+const travelerTestData = [
 {
 id: 1,
 name: "Ham Leadbeater",
@@ -251,4 +251,4 @@ travelerType: "foodie"
 }
 ];
 
-export default travelers;
+export default travelerTestData;

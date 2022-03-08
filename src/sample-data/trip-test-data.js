@@ -1,4 +1,4 @@
-const trips = [
+const tripTestData = [
 {
 id: 1,
 userID: 44,
@@ -49,6 +49,36 @@ duration: 18,
 status: "approved",
 suggestedActivities: [ ]
 },
+{
+id: 46,
+userID: 44,
+destinationID: 33,
+travelers: 2,
+date: "2020/08/24",
+duration: 11,
+status: "approved",
+suggestedActivities: [ ]
+},
+{
+id: 202,
+userID: 44,
+destinationID: 15,
+travelers: 3,
+date: "2022/08/08",
+duration: 7,
+status: "approved",
+suggestedActivities: [ ]
+},
+{
+id: 71,
+userID: 38,
+destinationID: 28,
+travelers: 1,
+date: "2020/05/26",
+duration: 11,
+status: "pending",
+suggestedActivities: [ ]
+},
 ]
 
-export default trips;
+export default tripTestData;

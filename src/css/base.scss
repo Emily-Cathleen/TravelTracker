@@ -82,24 +82,33 @@ body {
 background-size: cover;
 }
 
+.scrollable {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .nav-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	// border: 2px solid blue;
+	border: 2px solid blue;
 	background: #4f646196;
 }
 
 .total-spent {
 	display: flex;
-	// border: 2px solid white;
+	border: 2px solid white;
 }
 
 .nav-image {
 	height: 12vh;
 }
 
-.card-wrapper {
+.welcome-traveler {
+	font-size: 25px;
+}
+
+.form-wrapper {
 	// border: 2px solid yellow;
 	display: flex;
 	flex-direction: row;
@@ -126,13 +135,17 @@ background-size: cover;
 	height: 8vh;
 }
 
-.calender-card {
+.calendar-card {
 
 }
 
 .traveler-card {
 
 }
+
+// .destinations-card {
+// 	border: 2px solid pink;
+// }
 
 .traveler-form {
 	display: flex;
@@ -146,6 +159,12 @@ background-size: cover;
 	flex-direction: column;
 }
 
+.estimate-button-section {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 .trips-wrapper {
 	border: 2px solid green;
 	display: flex;
@@ -153,6 +172,18 @@ background-size: cover;
 	justify-content: space-around;
 	padding: 20px 0px 20px 0px;
 	height: 47vh;
+}
+
+.drop-down-wrapper {
+	border: 2px solid green;
+
+}
+
+.new-trips {
+	// border: 2px solid green;
+	display: flex;
+	flex-direction: column;
+	padding: 8px 0px 20px 0px;
 }
 
 .hidden {
