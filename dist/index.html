@@ -13,8 +13,8 @@
       <p class="welcome-traveler" id="welcome"></p>
       <section id="totalSpentThisYear" class="total-spent"></section>
     </nav>
-    <section class="card-wrapper">
-      <div id="postSuccessMessage" class="post-success-message"></div>
+    <form class="form-wrapper">
+      <!-- <div id="postSuccessMessage" class="post-success-message"></div> -->
       <article class="card calendar-card">
         <img class="card-image" alt="Calendar Image" src="./images/turing-logo.png"/>
         <h1 id=" "></h1>
@@ -22,16 +22,14 @@
         <input class="date-input" id="startDateInput" type="date" placeholder="date" required />
         <h3>Duration</h3>
         <input class="user-input-trip-duration" id="userInputTripDuration" type="number" min="1" placeholder="Duration of Trip" required />
-        <!-- <h3>End Date</h3>
-        <input class="date-input" id="endDateInput" type="date" value="yyyy-MM-dd" placeholder="date" required /> -->
       </article>
       <article class="card traveler-card">
         <img class="card-image" src="./images/turing-logo.png" alt="Traveler Image"/>
         <h1 id=""></h1>
         <h3>Travelers</h3>
-          <form class="traveler-form">
+          <div class="traveler-form">
             <input class="number-travelers-input" id="numberOfTravelersInput" type="number" min="1" placeholder="# of travelers" required />
-          </form>
+          </div>
       </article>
       <article class="card destinations-card">
         <img class="card-image" src="./images/turing-logo.png" alt="Traveler Image" />
@@ -42,7 +40,7 @@
             </select>
           </div>
       </article>
-    </section>
+    </form>
     <section class="submit-button-section">
       <button class="submit-button" id="submitButton">Create Your Trip!</button>
       <h1 class="estimated-trip-cost" id="estimatedCostOfTrip"></h1>
