@@ -11,6 +11,8 @@ import {
   fetchTravelerData,
   fetchTripData,
   fetchDestinationData,
+  postNewTrip,
+  postNewDestination,
 } from "./apiCalls.js";
 
 //GLOBALS
@@ -31,6 +33,12 @@ const pendingTrips = document.getElementById("pendingTrips");
 const totalSpentThisYear = document.getElementById("totalSpentThisYear");
 const startDateInput = document.getElementById("startDateInput");
 const endDateInput = document.getElementById("endDateInput");
+const numberOfTravelersInput = document.getElementById("numberOfTravelersInput");
+const submitButton = document.getElementById("submitButton");
+const userInputTripDuration = document.getElementById("userInputTripDuration");
+const postSuccessMessage = document.getElementById("postSuccessMessage");
+const viewNewTrips = document.getElementById("viewNewTrips");
+
 
 
 //FUNCTIONS
@@ -44,8 +52,7 @@ const fetchAllData = () => {
 };
 
 const parseAllData = (data) => {
-  const newTravelerID = getRandomIndex(data[0].travelers);
-  // console.log("NEWTRAVID", newTravelerID)
+  const newTravelerID = data[0].travelers[2].id;
   const dataObject = {};
   dataObject.travelers = data[0].travelers.map(traveler => new Traveler(traveler));
   dataObject.trips = data[1].trips.map(trip => new Trip(trip));
@@ -57,14 +64,7 @@ const parseAllData = (data) => {
   greetUser();
   displayAllTrips();
   displayAnnualTripCost();
-  // displayPendingTrips(newTravelerID);
   populateDestinationDropDown(dataObject.destinations);
-  // console.log("CURRENTRAVVVVVV", dataRepository.currentTraveler)
-};
-
-const getRandomIndex = (array) => {
-  randomIndex = Math.floor(Math.random() * array.length);
-  return randomIndex;
 };
 
 const greetUser = () => {
@@ -73,7 +73,7 @@ const greetUser = () => {
 
 const populateDestinationDropDown = () => {
   dataRepository.destinations.forEach(destination => {
-    dropDownMenuDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`
+    dropDownMenuDestinations.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`
   })
 }
 
@@ -101,32 +101,50 @@ const displayAnnualTripCost = () => {
 `
 }
 
-// const displayPastTrips = (past) => {
-  // currentUser.traveler.pastTrips.forEach(trip => {
+const createNewTrip = (event) => {
+  event.preventDefault();
+  const newTrip = {
+    id: Date.now(),
+    userID: currentUser.id,
+    destinationID: parseInt(dropDownMenuDestinations.value),
+    travelers: parseInt(numberOfTravelersInput.value),
+    date: startDateInput.value.replaceAll("-", "/"),
+    duration: parseInt(userInputTripDuration.value),
+    status: "pending",
+    suggestedActivities: [],
+  }
+  postNewTrip(newTrip)
+  .then(data => {    // data is success message. Yes, your trip was posted! display this eventually.
+    postSuccessMessage.innerText += `${data.message}`
+    fetchAllData()
+  })
+  .catch((error) => {
+    // console.log(error);
+    // showError(
+    //   "Sorry, we were unable to record your data. Please contact @hfaerber to file a complaint"
+    // );
+  });
 
-
+// const newDestination = {
+//   id: trips.id,
+//   destination: destination,
+//   estimatedLodgingCostPerDay: estimatedLodgingCostPerDay,
+//   estimatedFlightCostPerPerson: estimatedFlightCostPerPerson,
+//   image: image,
+//   alt: alt,
 // }
 
+  viewNewTrips.innerHTML += `
+  <div id="viewNewTrips" class="new-trips">
+  <p>Destination: ${newTrip.destinationID}</p>
+  <p>Date: ${newTrip.date}</p>
+  <img src="${newTrip.duration}"/>
+  </div>
+  `
 
-// const displayPendingTrips = (id) => {
-//   // console.log(dataRepository.getPendingTrips(id))
-//   dataRepository.getPendingTrips(id).forEach(trip => {
-//     // console.log(trip.destinationID)
-//     const destinationName = getDestinationName(trip.destinationID);
-//     pendingTrips.innerHTML += `
-//     <div id="${date.Now()}">
-//      <p>Date: ${trip.date}</p>
-//      <p>Destination: ${destinationName}</p>
-//      <p>Travelers: ${trip.travelers}
-//      <p>Duration: ${trip.duration} days</p>
-//      <p>Status: ${trip.status}</p>
-//      </div>
-//     `
-//   })
-  // pendingTrips.innerHTML = `${dataRepository.getPendingTrips()}`;
-
-
+};
 
 
 
 window.addEventListener('load', fetchAllData);
+submitButton.addEventListener('click', event => {createNewTrip(event)});
