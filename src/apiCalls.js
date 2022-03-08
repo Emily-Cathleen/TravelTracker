@@ -46,15 +46,15 @@ const postNewTrip = (trip) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(trip),
   })
-  .then(response => {response.json()})
+  .then(response => response.json())
 };
 
-const errorHandling = (response) => {
-  if(!response.ok) {
-    throw "We had trouble booking your trip, please try again dumbass."
-  }
-  return response.json()
-}
+// const errorHandling = (response) => {
+//   if(!response.ok) {
+//     throw "We had trouble booking your trip, please try again dumbass."
+//   }
+//   return response.json()
+// }
 
 //
 // const postNewDestination = (destination) => {
