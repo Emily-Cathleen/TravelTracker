@@ -1,6 +1,7 @@
 import Trip from './Trip';
 import Traveler from "./Traveler";
 import Destination from "./Destination";
+// import dayjs from 'dayjs';
 
 class DataRepository {
   constructor(data) {
@@ -9,6 +10,7 @@ class DataRepository {
     this.trips = data.trips;
     this.destinations = data.destinations;
     this.date;
+    this.tripCost;
   }
 
   getCurrentTraveler(id) {
@@ -31,11 +33,39 @@ class DataRepository {
   getTravelerTrips(travelerID) {
     const tripsByTravelerID = this.trips.filter(trip => {
       if (trip.userID === travelerID) {
-      this.currentTraveler.allTrips.push(trip)
-      return trip
+        this.currentTraveler.allTrips.push(trip)
+        return trip
       }
     })
     return tripsByTravelerID
+  }
+
+  date() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    let currentDate = `${yyyy}/${mm}/${dd}`;
+    return currentDate;
+  }
+
+  sortTrips(trips) {
+    const sorted = this.currentTraveler.allTrips.forEach(trip => {
+      let dest = this.getDestinationName(trip.destinationID)
+      let tripYear = parseInt(trip.date.split('/')[0])
+      if (tripYear === 2022) {
+        this.currentTraveler.presentTrips.push(trip)
+        if (trip.status === 'approved') {
+          this.currentTraveler.presentTrips.push(trip)
+        } else {
+          this.currentTraveler.pendingTrips.push(trips)
+        }
+      } else {
+        this.currentTraveler.pastTrips.push(trip)
+      }
+    })
+    return sorted
   }
 
 
@@ -46,35 +76,25 @@ class DataRepository {
     return name
   }
 
-// getPendingTrips(travelerID) {
-//   const pending = this.trips.forEach(trip => {
-//     if(trip.userID === travelerID) {
-//       if(trip.status === "pending"){
-//         this.currentTraveler.pendingTrips.push(trip)
-//       }
-//     }
-// })
-// return pending
-// }
+  getAnnualTripsCost(userID) {
+    const userTrips = this.currentTraveler.allTrips.filter(trip => {
+      let tripYear = parseInt(trip.date.split('/')[0])
+      return tripYear === 2022
+    })
+     const findPrice = userTrips.reduce((acc, currentTrip) => {
+      this.destinations.forEach(destination => {
+        if(destination.id === currentTrip.destinationID) {
+          acc += destination.estimatedLodgingCostPerDay * currentTrip.duration;
+          acc += destination.estimatedFlightCostPerPerson * currentTrip.travelers;
+        }
+      })
+      return acc
+    }, 0)
+    return findPrice * 1.1;
+    }
 
 
-
-
- //
-
-
- // calculateTotalSpentThisYear() {
- //   const totalLodging = this.destinations.estimatedLodgingCostPerDay * trips.duration;
- //   const totalFlight = this.destinations.estimatedFlightCostPerPerson * this.travelerCount;
- //   const tripCost = totalLodging + totalFlight;
- //   const costWithAgentFee = tripCost + (tripCost * .10);
- //     this.tripCost = costWithAgentFee;
- //     return costWithAgentFee;
- //   }
-
-
-
-}
+};
 
 
 export default DataRepository;
