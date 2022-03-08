@@ -173,6 +173,13 @@ background-size: cover;
 
 }
 
+.new-trips {
+	// border: 2px solid green;
+	display: flex;
+	flex-direction: column;
+	padding: 8px 0px 20px 0px;
+}
+
 .hidden {
 	display: none;
 }
