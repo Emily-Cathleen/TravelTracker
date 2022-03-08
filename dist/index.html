@@ -14,13 +14,16 @@
       <section id="totalSpentThisYear" class="total-spent"></section>
     </nav>
     <section class="card-wrapper">
+      <div id="postSuccessMessage" class="post-success-message"></div>
       <article class="card calendar-card">
         <img class="card-image" alt="Calendar Image" src="./images/turing-logo.png"/>
         <h1 id=" "></h1>
         <h3>Start Date</h3>
-        <input class="date-input" id="startDateInput" type="date" value="yyyy-MM-dd" placeholder="date" required />
-        <h3>End Date</h3>
-        <input class="date-input" id="endDateInput" type="date" value="yyyy-MM-dd" placeholder="date" required />
+        <input class="date-input" id="startDateInput" type="date" placeholder="date" required />
+        <h3>Duration</h3>
+        <input class="user-input-trip-duration" id="userInputTripDuration" type="number" min="1" placeholder="Duration of Trip" required />
+        <!-- <h3>End Date</h3>
+        <input class="date-input" id="endDateInput" type="date" value="yyyy-MM-dd" placeholder="date" required /> -->
       </article>
       <article class="card traveler-card">
         <img class="card-image" src="./images/turing-logo.png" alt="Traveler Image"/>
@@ -63,6 +66,7 @@
       <article class="card scrollable pending-card">
         <img class="card-image" alt="Calender Image" src="./images/turing-logo.png" />
         <h1 id="pendingTrips"></h1>
+          <p id="viewNewTrips" class="new-trips"></p>
         <h3>Pending Trips</h3>
       </article>
     </section>
