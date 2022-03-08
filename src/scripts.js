@@ -1,6 +1,7 @@
 import './css/base.scss';
 import './images/turing-logo.png'
 
+// import dayjs from 'dayjs';
 import Traveler from "./Traveler";
 import Destination from "./Destination";
 import Trip from "./Trip";
@@ -27,6 +28,7 @@ const welcome = document.getElementById("welcome");
 const dropDownMenuDestinations = document.getElementById("dropDownMenuDestinations");
 const pastTrips = document.getElementById("pastTrips");
 const pendingTrips = document.getElementById("pendingTrips");
+const totalSpentThisYear = document.getElementById("totalSpentThisYear");
 const startDateInput = document.getElementById("startDateInput");
 const endDateInput = document.getElementById("endDateInput");
 
@@ -54,6 +56,7 @@ const parseAllData = (data) => {
   currentUser = dataRepository.currentTraveler;
   greetUser();
   displayAllTrips();
+  displayAnnualTripCost();
   // displayPendingTrips(newTravelerID);
   populateDestinationDropDown(dataObject.destinations);
   // console.log("CURRENTRAVVVVVV", dataRepository.currentTraveler)
@@ -78,7 +81,6 @@ const displayAllTrips = () => {
   const getTrips = dataRepository.getTravelerTrips(currentUser.id);
   getTrips.forEach(trip => {
     const destinationName = dataRepository.getDestinationName(trip.destinationID);
-    console.log(destinationName)
     pastTrips.innerHTML += `
     <div id="${Date.now()}">
         <p>Destination: ${destinationName.destination}</p>
@@ -91,6 +93,20 @@ const displayAllTrips = () => {
     `
   })
 };
+
+const displayAnnualTripCost = () => {
+  const displayTotal = dataRepository.getAnnualTripsCost(currentUser.id);
+  totalSpentThisYear.innerHTML += `
+  <p id="totalSpentThisYear" class="total-spent">Total Spent On Trips: ${displayTotal}</p>
+`
+}
+
+// const displayPastTrips = (past) => {
+  // currentUser.traveler.pastTrips.forEach(trip => {
+
+
+// }
+
 
 // const displayPendingTrips = (id) => {
 //   // console.log(dataRepository.getPendingTrips(id))
