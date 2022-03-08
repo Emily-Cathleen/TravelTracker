@@ -119,28 +119,40 @@ const createNewTrip = (event) => {
     fetchAllData()
   })
   .catch((error) => {
-    // console.log(error);
-    // showError(
-    //   "Sorry, we were unable to record your data. Please contact @hfaerber to file a complaint"
-    // );
+    // errorHandling(response);
+    // console.log(errorHandling());
   });
-
-// const newDestination = {
-//   id: trips.id,
-//   destination: destination,
-//   estimatedLodgingCostPerDay: estimatedLodgingCostPerDay,
-//   estimatedFlightCostPerPerson: estimatedFlightCostPerPerson,
-//   image: image,
-//   alt: alt,
-// }
 
   viewNewTrips.innerHTML += `
   <div id="viewNewTrips" class="new-trips">
-  <p>Destination: ${newTrip.destinationID}</p>
+  <img src="${newTrip.date}"/>
+  <p>Destination: ${dropDownMenuDestinations.value}</p>
   <p>Date: ${newTrip.date}</p>
-  <img src="${newTrip.duration}"/>
+  <p>Duration: ${newTrip.duration} days</p>
   </div>
   `
+
+// const newDestination = {
+//   id: Date.now(),
+//   // destination: destination,
+//   // estimatedLodgingCostPerDay: estimatedLodgingCostPerDay,
+//   // estimatedFlightCostPerPerson: estimatedFlightCostPerPerson,
+//   // image: image,
+//   // alt: alt,
+// }
+// postNewDestination(newDestination)
+// .then(data => {    // data is success message. Yes, your trip was posted! display this eventually.
+//   postSuccessMessage.innerText += `${data.message}`
+//   fetchAllData()
+// })
+// .catch((error) => {
+//   // console.log(error);
+//   // showError(
+//   //   "Sorry, we were unable to record your data. Please contact @hfaerber to file a complaint"
+//   // );
+// });
+
+
 
 };
 
