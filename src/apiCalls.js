@@ -43,8 +43,8 @@ const postNewTrip = (trip) => {
   return fetch("http://localhost:3001/api/v1/trips",
   {
     method: "POST",
-    body: JSON.stringify(trip),
     headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(trip),
   })
   .then(response => {response.json()})
 };
