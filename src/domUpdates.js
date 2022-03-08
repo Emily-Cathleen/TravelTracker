@@ -1,11 +1,12 @@
+const domUpdates = {
 
-// const welcome = document.getElementById("welcome");
-// let randomIndex;
+  displayFetchErrorHandling(message, selector) {
+    let error = document.querySelector(selector);
+    error.classList.remove('hidden');
+    error.innerText = message;
+  }
+
+}
 
 
-//DOM MANIPULATION FUNCTIONS
-
-
-
-
-// export default domUpdates;
+export default domUpdates;
