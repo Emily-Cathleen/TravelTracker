@@ -1,4 +1,6 @@
 import Trip from './Trip.js';
+// import dayjs from 'dayjs';
+
 
 class Traveler {
   constructor(travelerData) {
@@ -8,17 +10,12 @@ class Traveler {
     this.allTrips = [];
     this.pastTrips = [];
     this.presentTrips = [];
-    this.upcomingTrips = [];
+    this.futureTrips = [];
     this.pendingTrips = [];
   }
 
 
-
-
-
 }
-
-
 
 
 export default Traveler
