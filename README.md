@@ -4,7 +4,14 @@ Welcome to your personal Adventure Tracker! Upon visiting the site, a user is gr
 
 Login Page to Traveler Dashboard:
 
-![Gif 1](http://g.recordit.co/vfFvdwEx7a.gif)
+Adding a New Trip: 
+
+The user is also able to book a new trip by chosing a start date, duration of trip, number of travelers, and desired destination. Once the trip is designed by the user, they can click the "Calculate Estimated Cost" button to see how much the trip will cost. The user can then book the trip and it will immediately show up in their pending and upcoming trip sections.
+
+# To login to site
+Username: traveler + any number 1 - 50 (ex: traveler36)
+Password: travel2020
+
 
 # Contributors
 - [Emily Corcoran](https://github.com/Emily-Cathleen)
