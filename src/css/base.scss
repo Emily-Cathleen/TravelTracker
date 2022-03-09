@@ -128,7 +128,12 @@ background-size: cover;
 	box-shadow: 1px 1px 80px 1px #18251e;
 	padding-top: 6px;
 	padding-bottom: 6px;
+	// position: relative;
 }
+
+// .keep-header {
+// 	position: fixed;
+// }
 
 .card-image {
 	margin: 4%;
@@ -178,6 +183,7 @@ background-size: cover;
 	border: 2px solid green;
 
 }
+
 
 .new-trips {
 	// border: 2px solid green;

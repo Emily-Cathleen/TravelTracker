@@ -8,7 +8,7 @@
 </head>
 <body>
   <main class="main-container">
-    <div class="login-page hidden" id="loginPage">
+    <div class="login-page" id="loginPage">
       <article class="user-login">
         <img class="card-image" src="./images/turing-logo.png" alt="Traveler Image"/>
             <input class="username-input" id="userNameInput" type="text" placeholder="username input" required />
@@ -16,7 +16,7 @@
             <button class="login-button" id="loginButton"> Login </button>
       </article>
     </div>
-    <div class="logged-in-user" id="loggedInUser" hidden">
+    <div class="logged-in-user hidden" id="loggedInUser">
     <nav class="nav-wrapper">
       <img class="nav-image" src="./images/turing-logo.png" alt="turing logo">
       <p class="welcome-traveler" id="welcome"></p>
@@ -64,21 +64,17 @@
         <h1 id="allTrips"></h1>
 
       </article>
-      <article class="card scrollable present-trips">
+      <article class="card scrollable past-trips">
+        <!-- <div class="keep-header"> -->
         <img class="card-image" src="./images/turing-logo.png" alt="Calender Image"  />
-        <h1 id="presentTrips"></h1>
-        <h3>Present Trips</h3>
+        <h3>Past Trips</h3>
+        <!-- </div> -->
+        <h1 id="pastTrips"></h1>
       </article>
-      <article class="card scrollable upcoming-card">
+      <article class="card scrollable future-card">
         <img class="card-image" alt="Calendar Image" src="./images/turing-logo.png" />
-        <h1 id="upcomingTrips"></h1>
-        <h3>Upcoming Trips</h3>
-      </article>
-      <article class="card scrollable pending-card">
-        <img class="card-image" alt="Calender Image" src="./images/turing-logo.png" />
-        <h3>Newly Added Trips</h3>
-        <h1 id="pendingTrips"></h1>
-          <p id="viewNewTrips" class="new-trips"></p>
+        <h3>Future Trips</h3>
+        <h1 id="futureTrips"></h1>
       </article>
     </section>
   </div>

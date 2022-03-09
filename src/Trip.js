@@ -1,4 +1,4 @@
-// import dayjs from 'dayjs';
+import DataRepository from './DataRepository.js';
 
 class Trip {
   constructor(tripData) {
@@ -14,6 +14,12 @@ class Trip {
     this.tripEndDate;
   }
 
+  findTripDuration() {
+    let tripStart = new Date(this.date);
+    let tripEnd = new Date(this.date).setDate(new Date(this.date).getDate() + this.duration);
+    this.tripStartDate = tripStart.getTime();
+    this.tripEndDate = tripEnd;
+  }
 
 }
 

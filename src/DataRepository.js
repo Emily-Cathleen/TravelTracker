@@ -1,7 +1,6 @@
 import Trip from './Trip';
 import Traveler from "./Traveler";
 import Destination from "./Destination";
-// import dayjs from 'dayjs';
 
 class DataRepository {
   constructor(data) {
@@ -11,6 +10,7 @@ class DataRepository {
     this.destinations = data.destinations;
     this.date;
     this.tripCost;
+    this.today = new Date().getTime();
   }
 
   getCurrentTraveler(id) {
@@ -41,33 +41,39 @@ class DataRepository {
     return tripsByTravelerID
   }
 
-  date() {
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
+  // date() {
+  //   let today = new Date();
+  //   let dd = String(today.getDate()).padStart(2, '0');
+  //   let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  //   let yyyy = today.getFullYear();
+  //
+  //   let currentDate = `${yyyy}/${mm}/${dd}`;
+  //   return currentDate;
+  // }
 
-    let currentDate = `${yyyy}/${mm}/${dd}`;
-    return currentDate;
-  }
 
-  sortTrips(trips) {
-    const sorted = this.currentTraveler.allTrips.forEach(trip => {
-      let dest = this.getDestinationName(trip.destinationID)
-      let tripYear = parseInt(trip.date.split('/')[0])
-      if (tripYear === 2022) {
-        this.currentTraveler.presentTrips.push(trip)
-        if (trip.status === 'approved') {
-          this.currentTraveler.presentTrips.push(trip)
-        } else {
-          this.currentTraveler.pendingTrips.push(trips)
-        }
-      } else {
-        this.currentTraveler.pastTrips.push(trip)
-      }
-    })
-    return sorted
-  }
+sortPastTrips() {
+  this.currentTraveler.allTrips.forEach(trip => {
+    trip.findTripDuration();
+    let tripEnd = trip.tripEndDate
+    if(tripEnd < this.today && !this.currentTraveler.pastTrips.includes(trip)){
+      this.currentTraveler.pastTrips.push(trip)
+    }
+  })
+
+}
+
+sortFutureTrips() {
+  this.currentTraveler.allTrips.forEach(trip => {
+    trip.findTripDuration();
+    let tripStart = trip.tripStartDate
+    if(tripStart > this.today && !this.currentTraveler.futureTrips.includes(trip)){
+      this.currentTraveler.futureTrips.push(trip)
+    }
+  })
+
+}
+
 
 
   getDestinationName(destinationID) {
@@ -104,7 +110,6 @@ class DataRepository {
   }
 
   getEstimatedTripCost(trip, destination) {
-    console.log("LOOKHERE", destination)
     const tripTotal = (destination.estimatedLodgingCostPerDay * trip.duration) +
       (destination.estimatedFlightCostPerPerson * trip.travelers)
     const fee = tripTotal / 0.1
