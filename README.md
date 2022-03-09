@@ -79,8 +79,5 @@ If you want to know more about our code architecture, [click here](https://gist.
 - 
 
 # Future Additions
-- User receives randomized activity prompt to encourage good habits.
-- User interation, ability to pick a date.
-- After user inputs data for the day, make page refresh to show current data.
-- Sad path testing.
+- As a travel agent: I should be able to login: I will see a login page when I first visit the site: I can log in with the following credentials: 
 
