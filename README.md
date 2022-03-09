@@ -74,7 +74,9 @@ After starting both servers, project will run at http://localhost:8080/
 If you want to know more about our code architecture, [click here](https://gist.github.com/Ekaiman/f0c6022e295921a810e7531a4d38f9b0).
 
 # Challenges and Wins
-A challenge and win in this project was learning how to use API fetch calls and drilling into the data to get the information we need. The charts.js, getting charts to display were both a challenge and a win. Posting to the API was a win for the team.
+- API calls
+- Sorting the trips by current and present
+- 
 
 # Future Additions
 - User receives randomized activity prompt to encourage good habits.
