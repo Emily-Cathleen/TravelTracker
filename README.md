@@ -8,9 +8,10 @@ Adding a New Trip:
 
 The user is also able to book a new trip by chosing a start date, duration of trip, number of travelers, and desired destination. Once the trip is designed by the user, they can click the "Calculate Estimated Cost" button to see how much the trip will cost. The user can then book the trip and it will immediately show up in their pending and upcoming trip sections.
 
-# To login to site
+# How to login to the site
+
 Username: traveler + any number 1 - 50 (ex: traveler36)
-Password: travel2020
+Password: travel
 
 
 # Contributors
