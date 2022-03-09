@@ -23,13 +23,15 @@ let randomIndex;
 let currentUser;
 let dataRepository;
 let newTripDisplay;
+let parsedID;
 
 //QUERY SELECTORS
 
 const welcome = document.getElementById("welcome");
 const dropDownMenuDestinations = document.getElementById("dropDownMenuDestinations");
 const allTrips = document.getElementById("allTrips");
-const pendingTrips = document.getElementById("pendingTrips");
+const pastTrips = document.getElementById("pastTrips");
+const futureTrips = document.getElementById("futureTrips");
 const totalSpentThisYear = document.getElementById("totalSpentThisYear");
 const startDateInput = document.getElementById("startDateInput");
 const endDateInput = document.getElementById("endDateInput");
@@ -59,7 +61,7 @@ const fetchAllData = () => {
 };
 
 const parseAllData = (data) => {
-  const newTravelerID = data[0].travelers[5].id;
+  const newTravelerID = parsedID;
   const dataObject = {};
   dataObject.travelers = data[0].travelers.map(traveler => new Traveler(traveler));
   dataObject.trips = data[1].trips.map(trip => new Trip(trip));
@@ -70,6 +72,8 @@ const parseAllData = (data) => {
   currentUser = dataRepository.currentTraveler;
   greetUser();
   displayAllTrips();
+  displayPastTrips();
+  displayFutureTrips();
   displayAnnualTripCost();
   // console.log("DATAOBJTRIPS", dataObject.trips)
   populateDestinationDropDown(dataObject.destinations);
@@ -84,12 +88,19 @@ const removeHidden = (element) => {
 }
 
 
+const parseUserName = () => {
+ parsedID = parseInt(userNameInput.value.substring(8));
+};
+
 
 const showUserProfile = () => {
-  addHidden(loginPage);
-  removeHidden(loggedInUser);
-
-}
+  parseUserName();
+  if(parsedID <= 50 && passwordInput.value === "travel") {
+    addHidden(loginPage);
+    removeHidden(loggedInUser);
+    fetchAllData();
+  }
+};
 
 const greetUser = () => {
   welcome.innerText = `Adventure Awaits, ${dataRepository.getFirstName()}`;
@@ -107,13 +118,10 @@ const getNameFromID = (destinationID) => {
    })
 }
 
-const displayAllTrips = () => {
-  // currentUser = dataRepository.currentTraveler;
-  const getTrips = dataRepository.getTravelerTrips(currentUser.id);
-  getTrips.forEach(trip => {
-// dataRepository.currentTraveler.allTrips.push(trip)
-const destinationObject = dataRepository.getDestinationName(trip.destinationID);
-    allTrips.innerHTML += `
+const createTripDisplay = (tripType, location) => {
+  tripType.forEach(trip => {
+      const destinationObject = dataRepository.getDestinationName(trip.destinationID);
+    location.innerHTML += `
     <div id="${Date.now()}">
         <p>Destination: ${destinationObject.destination}</p>
         <img src="${destinationObject.image}"/>
@@ -124,32 +132,85 @@ const destinationObject = dataRepository.getDestinationName(trip.destinationID);
       </div>
     `
   })
+}
+
+const displayAllTrips = () => {
+  const getTrips = dataRepository.getTravelerTrips(currentUser.id);
+  createTripDisplay(getTrips, allTrips)
+  // getTrips.forEach(trip => {
+  //     const destinationObject = dataRepository.getDestinationName(trip.destinationID);
+  //   allTrips.innerHTML += `
+  //   <div id="${Date.now()}">
+  //       <p>Destination: ${destinationObject.destination}</p>
+  //       <img src="${destinationObject.image}"/>
+  //       <p>Date: ${trip.date}</p>
+  //       <p>Travelers: ${trip.travelers}
+  //       <p>Duration: ${trip.duration} days</p>
+  //       <p>Status: ${trip.status}</p>
+  //     </div>
+  //   `
+  // })
 };
+
+const displayPastTrips = () => {
+  dataRepository.sortPastTrips();
+  const getPastTrips = currentUser.pastTrips
+  createTripDisplay(getPastTrips, pastTrips)
+  // getPastTrips.forEach(trip => {
+  //   const destinationObject = dataRepository.getDestinationName(trip.destinationID);
+  //   pastTrips.innerHTML += `
+  //   <div id="${Date.now()}">
+  //       <p>Destination: ${destinationObject.destination}</p>
+  //       <img src="${destinationObject.image}"/>
+  //       <p>Date: ${trip.date}</p>
+  //       <p>Travelers: ${trip.travelers}
+  //       <p>Duration: ${trip.duration} days</p>
+  //       <p>Status: ${trip.status}</p>
+  //     </div>
+  //   `
+  // })
+}
+
+const displayFutureTrips = () => {
+  dataRepository.sortFutureTrips();
+  const getFutureTrips = currentUser.futureTrips
+  createTripDisplay(getFutureTrips, futureTrips)
+
+  // getFutureTrips.forEach(trip => {
+  //   const destinationObject = dataRepository.getDestinationName(trip.destinationID);
+  //   futureTrips.innerHTML += `
+  //   <div id="${Date.now()}">
+  //       <p>Destination: ${destinationObject.destination}</p>
+  //       <img src="${destinationObject.image}"/>
+  //       <p>Date: ${trip.date}</p>
+  //       <p>Travelers: ${trip.travelers}
+  //       <p>Duration: ${trip.duration} days</p>
+  //       <p>Status: ${trip.status}</p>
+  //     </div>
+  //   `
+  // })
+}
 
 const displayAnnualTripCost = () => {
   const displayTotal = dataRepository.getAnnualTripsCost(currentUser.id);
-  totalSpentThisYear.innerHTML += `
-  <p id="totalSpentThisYear" class="total-spent">Total Spent On Trips: ${displayTotal}</p>
+  const formatCurrency = new Intl.NumberFormat("en-US", {style: 'currency', currency: 'USD'}).format(displayTotal)
+  totalSpentThisYear.innerHTML = `
+  <p id="totalSpentThisYear" class="total-spent">Total Spent On Trips: ${formatCurrency}</p>
 `
 }
 
 const displayEstimate = (event) => {
-  console.log(numberOfTravelersInput.value);
-  console.log(userInputTripDuration.value);
-  console.log(dropDownMenuDestinations.value);
   event.preventDefault()
-
   const newlyCreatedTrip = {
     travelers: numberOfTravelersInput.value,
     duration: userInputTripDuration.value
   }
   const destinationID = dataRepository.getDestinationById(parseInt(dropDownMenuDestinations.value))
   console.log("DESTINATIONID", destinationID)
-  displayEstCost.innerHTML += `
+  displayEstCost.innerHTML = `
   <p class="display-est-cost" id="displayEstCost">Estimated Trip Cost: ${dataRepository.getEstimatedTripCost(newlyCreatedTrip, destinationID)}</p>
 `
 }
-
 
 const createNewTrip = (event) => {
   event.preventDefault();
@@ -173,7 +234,7 @@ const createNewTrip = (event) => {
   postNewTrip(newTrip)
   .then(data => {    // data is success message. Yes, your trip was posted! display this eventually.
     postSuccessMessage.innerText += `${data.message}`
-    fetchAllData()
+    // fetchAllData()
 
   })
   .catch((error) => {
@@ -182,18 +243,11 @@ const createNewTrip = (event) => {
   });
 
   formWrapper.reset()
-  pageReload();
+  displayEstCost.innerHTML = ' '
+  fetchAllData()
 
+  // pageReload();
 
- // viewNewTrips.innerHTML += newTripDisplay;
-
-  // allTrips.innerHTML += `
-  // <div id="viewNewTrips" class="new-trips">
-  // <p>Destination: ${newTrip.destinationID}</p>
-  // <p>Date: ${newTrip.date}</p>
-  // <p>Duration: ${newTrip.duration} days</p>
-  // </div>
-  // `
 };
 
 const pageReload = () => {
@@ -201,6 +255,7 @@ const pageReload = () => {
 }
 
 
-window.addEventListener('load', fetchAllData);
+// window.addEventListener('load', fetchAllData);
 estimatedCostOfTripButton.addEventListener('click', event => {displayEstimate(event)});
 submitButton.addEventListener('click', event => {createNewTrip(event)});
+loginButton.addEventListener('click', showUserProfile)
