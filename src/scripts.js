@@ -137,38 +137,14 @@ const createTripDisplay = (tripType, location) => {
 const displayAllTrips = () => {
   const getTrips = dataRepository.getTravelerTrips(currentUser.id);
   createTripDisplay(getTrips, allTrips)
-  // getTrips.forEach(trip => {
-  //     const destinationObject = dataRepository.getDestinationName(trip.destinationID);
-  //   allTrips.innerHTML += `
-  //   <div id="${Date.now()}">
-  //       <p>Destination: ${destinationObject.destination}</p>
-  //       <img src="${destinationObject.image}"/>
-  //       <p>Date: ${trip.date}</p>
-  //       <p>Travelers: ${trip.travelers}
-  //       <p>Duration: ${trip.duration} days</p>
-  //       <p>Status: ${trip.status}</p>
-  //     </div>
-  //   `
-  // })
+
 };
 
 const displayPastTrips = () => {
   dataRepository.sortPastTrips();
   const getPastTrips = currentUser.pastTrips
   createTripDisplay(getPastTrips, pastTrips)
-  // getPastTrips.forEach(trip => {
-  //   const destinationObject = dataRepository.getDestinationName(trip.destinationID);
-  //   pastTrips.innerHTML += `
-  //   <div id="${Date.now()}">
-  //       <p>Destination: ${destinationObject.destination}</p>
-  //       <img src="${destinationObject.image}"/>
-  //       <p>Date: ${trip.date}</p>
-  //       <p>Travelers: ${trip.travelers}
-  //       <p>Duration: ${trip.duration} days</p>
-  //       <p>Status: ${trip.status}</p>
-  //     </div>
-  //   `
-  // })
+
 }
 
 const displayFutureTrips = () => {
@@ -176,19 +152,6 @@ const displayFutureTrips = () => {
   const getFutureTrips = currentUser.futureTrips
   createTripDisplay(getFutureTrips, futureTrips)
 
-  // getFutureTrips.forEach(trip => {
-  //   const destinationObject = dataRepository.getDestinationName(trip.destinationID);
-  //   futureTrips.innerHTML += `
-  //   <div id="${Date.now()}">
-  //       <p>Destination: ${destinationObject.destination}</p>
-  //       <img src="${destinationObject.image}"/>
-  //       <p>Date: ${trip.date}</p>
-  //       <p>Travelers: ${trip.travelers}
-  //       <p>Duration: ${trip.duration} days</p>
-  //       <p>Status: ${trip.status}</p>
-  //     </div>
-  //   `
-  // })
 }
 
 const displayAnnualTripCost = () => {
