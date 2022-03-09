@@ -10,8 +10,8 @@ The user is also able to book a new trip by chosing a start date, duration of tr
 
 # How to login to the site
 
-Username: traveler + any number 1 - 50 (ex: traveler36)
-Password: travel
+- Username: traveler + any number 1 - 50 (ex: traveler36)
+- Password: travel
 
 
 # Contributors
