@@ -1,6 +1,6 @@
 # Travel Tracker 🌱
 
-Adventure Awaits! This application will help you plan your next trip.  
+Adventure Awaits! Use Travel Tracker to book your next getaway.
 
 ## Deployed Site
 
@@ -15,7 +15,6 @@ Adventure Awaits! This application will help you plan your next trip.
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Mocha](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white)
 ![Chai](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
-
 
 
 ## Installation
