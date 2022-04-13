@@ -2,29 +2,15 @@
 
 
 
-Login Page to Traveler Dashboard:
-
-Adding a New Trip: 
-
-
-
-# How to login to the site
-
-
-
 # Contributors
 - [Emily Corcoran](https://github.com/Emily-Cathleen)
 
-# Technologies Used 
-- Javascript
-- HTML
-- CSS
-- Mocha/Chai
-- Webpack
-- Charts.js
+# Tech Stack
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-# Getting Started
-To get a local copy up and running follow these simple steps.
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+
+
 
 ## Installation
 
