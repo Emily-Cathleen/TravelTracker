@@ -1,17 +1,15 @@
 # Travel Tracker: Adventure Awaits
 
-Welcome to your personal Adventure Tracker! Upon visiting the site, a user is greated by a login screen. After entering the correct credentials, the user's dashboard appears. Users can view their yearly spending on travel, as well as upcoming, current, and past trips, and any trips that may be pending a travel agent's approval.
+
 
 Login Page to Traveler Dashboard:
 
 Adding a New Trip: 
 
-The user is also able to book a new trip by chosing a start date, duration of trip, number of travelers, and desired destination. Once the trip is designed by the user, they can click the "Calculate Estimated Cost" button to see how much the trip will cost. The user can then book the trip and it will immediately show up in their pending and upcoming trip sections.
+
 
 # How to login to the site
 
-- Username: traveler + any number 1 - 50 (ex: traveler36)
-- Password: travel
 
 
 # Contributors
