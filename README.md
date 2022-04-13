@@ -1,8 +1,8 @@
 # Travel Tracker: Adventure Awaits
 
+## Deployed Site
 
-
-# Contributors
+## Contributors
 - [Emily Corcoran](https://github.com/Emily-Cathleen)
 
 # Tech Stack
