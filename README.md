@@ -1,4 +1,6 @@
-# Travel Tracker: Adventure Awaits
+# Travel Tracker 🌱
+
+Adventure Awaits!
 
 ## Deployed Site
 
