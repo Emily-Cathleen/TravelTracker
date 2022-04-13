@@ -1,6 +1,6 @@
 # Travel Tracker 🌱
 
-Adventure Awaits! Use Travel Tracker to book your next getaway.
+Adventure Awaits! Use Travel Tracker to book your next getaway. This is an interactive webpage built with JavaScript that allows a user to track their past, present, and pending trips. 
 
 ## Deployed Site
 
