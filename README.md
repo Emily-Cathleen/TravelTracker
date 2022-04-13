@@ -1,6 +1,6 @@
 # Travel Tracker 🌱
 
-Adventure Awaits!
+Adventure Awaits! This application will help you plan your next trip.  
 
 ## Deployed Site
 
